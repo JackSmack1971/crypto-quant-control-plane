@@ -25,10 +25,10 @@ Portable **project scaffold**, not a verified deployment. Converts the project a
 7. Run a constrained first task: asset identity and two independent read-only quotes, return INCONCLUSIVE on failed coverage; then a historical PIT test; then a paper-only analytical report.
 
 ## Important boundaries
-This project cannot automatically import ChatGPT app credentials, server-side tools or conversation memory; neither agent metadata nor a tool name proves compatibility. Only OpenAI documentation MCP is configured, and connectivity has not been exercised. No trading or wallet transactions are allowed. Network access is off in the default workspace sandbox. A human must manage tool onboarding and trust.
+This project cannot automatically import ChatGPT app credentials, server-side tools or conversation memory; neither agent metadata nor a tool name proves compatibility. Project MCP registrations (OpenAI Docs plus read-only market-data servers; Alchemy and Helius disabled) are listed in `.codex/config.toml`; connectivity has not been exercised. No trading or wallet transactions are allowed. Network access is off in the default workspace sandbox. A human must manage tool onboarding and trust.
 
 ## Audit status
-See `docs/control-plane-audit.md` (2026-10-22). The documented legacy `workspace-write` sandbox remains network-off; any higher-level Codex policy or host environment must be checked separately. The nine supplied methodologies and prior VVV artifact are preserved verbatim. The archive contains no active market-data MCP registrations or credentials.
+See `docs/control-plane-audit.md` (2026-10-22). The documented legacy `workspace-write` sandbox remains network-off; any higher-level Codex policy or host environment must be checked separately. The nine supplied methodologies and prior VVV artifact are preserved verbatim. The archive contains no credentials; market-data MCP servers are registered in `.codex/config.toml` but unverified (see `docs/tool-registry.md`).
 
 ## Coordination and workflow selection
 The primary routes to the smallest relevant skill; specialists receive bounded, read-only tasks under `docs/orchestration-contract.md`. Dispatch and handoffs are behavioral conventions, not a newly implemented runtime orchestration service. No user-account or trading capability is conferred by installing the scaffold.
