@@ -1,5 +1,8 @@
 # Loaded only when this repository is trusted by Codex.
 # Do not put credentials or host-specific provider settings in this file.
+# MCP keys used below are documented Codex config keys only:
+# url, command, args, env, enabled, enabled_tools, disabled_tools, scopes,
+# env_http_headers, default_tools_approval_mode, tools.<name>.approval_mode.
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 
@@ -10,44 +13,76 @@ network_access = false
 max_threads = 4
 max_depth = 1
 
+# Probed 2026-10-23 without Codex: five read tools. See docs/mcp-probe-2026-10-23.md.
 [mcp_servers.openaiDeveloperDocs]
 url = "https://developers.openai.com/mcp"
+enabled_tools = ["search_openai_docs", "list_openai_docs", "fetch_openai_doc", "list_api_endpoints", "get_openapi_spec"]
 
 # Project-owned MCP registrations. Credentials and OAuth sessions are NOT committed.
 # Registration is not proof of authorization or successful connection.
+# A generic Python urllib User-Agent received Cloudflare 403 error 1010 from several
+# hosts on 2026-10-23. No User-Agent header is set here: Codex's own client was not tested.
 
+# Hosted server exposes only execute (arbitrary JS against the SDK) and search_docs.
+# execute.intent is vendor-logged. Approval mode is the repo's stance; Codex enforcement is unverified.
 [mcp_servers.coingecko]
 url = "https://mcp.api.coingecko.com/mcp"
+enabled_tools = ["execute", "search_docs"]
+default_tools_approval_mode = "prompt"
 
+[mcp_servers.coingecko.tools.execute]
+approval_mode = "approve"
+
+# tools/list 2026-10-23. submitFeedback is excluded; rationale arguments are logged by the server.
 [mcp_servers.coinpaprika]
 url = "https://mcp.coinpaprika.com/streamable-http"
+enabled_tools = ["getCoins", "getCoinById", "getCoinEvents", "getCoinExchanges", "getCoinMarkets", "getCoinOHLCVLatest", "getCoinOHLCVToday", "getTickers", "getTickersById", "getTickersHistoricalById", "getExchanges", "getExchangeByID", "getExchangeMarkets", "getPeopleById", "getTags", "getTagById", "getPlatforms", "getContracts", "getTickerByContract", "getHistoricalTickerByContract", "status", "getGlobal", "search", "resolveId", "priceConverter", "getCapabilities"]
+disabled_tools = ["submitFeedback"]
 
 [mcp_servers.dexpaprika]
 url = "https://mcp.dexpaprika.com/streamable-http"
+enabled_tools = ["getNetworks", "getNetworkDexes", "getNetworkPools", "getDexPools", "getNetworkPoolsFilter", "getPoolDetails", "getPoolOHLCV", "getPoolIndicator", "getPoolTransactions", "getTokenDetails", "getTokenPools", "getTopTokens", "filterNetworkTokens", "getTokenMultiPrices", "getTokenOHLCV", "getTokenIndicator", "search", "getStats", "getCapabilities"]
+disabled_tools = ["submitFeedback"]
 
+# DOCS_DERIVED_UNVERIFIED 2026-10-23. tools/list requires OAuth and was not captured.
+# Names are the research-only examples on https://docs.0xarchive.io/mcp-server.
+# Request only mcp:market.read. Decline mcp:webhooks.read, mcp:webhooks.write, and mcp:feedback.write
+# if the consent screen offers them. Codex scope enforcement was not tested.
 [mcp_servers.oxarchive]
 url = "https://mcp.0xarchive.io/mcp"
-enabled_tools = ["get_capabilities", "get_data_coverage", "get_instruments", "get_trades", "get_orderbook", "get_orderbook_history", "get_candles", "get_funding_history", "get_open_interest_history", "get_liquidations"]
+scopes = ["mcp:market.read"]
+enabled_tools = ["get_summary", "get_candles", "get_funding_current", "get_lighter_funding_current", "get_hip3_summary", "get_hip4_outcomes", "get_data_incidents", "get_symbol_coverage"]
+disabled_tools = ["get_account_positions", "get_account_positions_history", "get_account_position_changes", "get_market_positions", "get_market_positions_summary", "get_lighter_accounts"]
 
+# Probe 2026-10-23: HTTP 401, tools/list not obtained. Scopes in metadata: openid, offline_access, account.
 [mcp_servers.massive]
 url = "https://mcp.massive.com/"
 
+# direct_api_call accepts POST and is denied. PRO-key notice is documented in docs/tool-registry.md.
 [mcp_servers.blockscout]
 url = "https://mcp.blockscout.com/mcp"
-# Optional PRO key, supplied only by the launching environment.
 env_http_headers = { "Blockscout-MCP-Pro-Api-Key" = "BLOCKSCOUT_MCP_PRO_API_KEY" }
+enabled_tools = ["__unlock_blockchain_analysis__", "get_block_info", "get_block_number", "get_address_by_ens_name", "get_transactions_by_address", "get_token_transfers_by_address", "lookup_token_by_symbol", "get_contract_abi", "inspect_contract_code", "read_contract", "get_address_info", "get_tokens_by_address", "nft_tokens_by_address", "get_transaction_info", "get_chains_list"]
+disabled_tools = ["direct_api_call"]
 
+# Pinned to the probed build. enabled_tools is the Codex client allow-list.
+# .codex/ccxt-mcp.config.json sets hideDisabledTools and no accounts. Relative path
+# resolves only when the server process cwd is the repository root. Not re-probed.
 [mcp_servers.ccxt]
 command = "npx"
-args = ["-y", "ccxt-mcp"]
-# Public market methods only; do not forward exchange credentials.
+args = ["-y", "ccxt-mcp@0.1.3"]
+env = { CCXT_MCP_CONFIG = ".codex/ccxt-mcp.config.json" }
 enabled_tools = ["list_exchanges", "describe_exchange", "describe_method", "search_markets", "get_tickers", "get_orderbook", "get_ohlcv", "get_trades", "search_events", "get_safety_status"]
+disabled_tools = ["list_accounts", "get_balance", "get_orders", "get_my_trades", "get_positions", "create_order", "edit_order", "cancel_order", "cancel_all_orders", "set_leverage", "set_margin_mode", "call_write_method", "withdraw", "transfer", "get_deposit_address", "call_implicit_write"]
 
 [mcp_servers.alchemy]
 url = "https://mcp.alchemy.com/mcp"
 enabled = false  # OAuth and per-tool review must precede activation.
 
+# Pinned to the probed 2.3.0. commander@15 in that tree requires Node >= 22.12.
+# Kept disabled. Write, webhook, and account families are denied if it is later enabled.
 [mcp_servers.helius]
 command = "npx"
-args = ["-y", "helius-mcp@latest"]
+args = ["-y", "helius-mcp@2.3.0"]
 enabled = false  # Routed tools may exceed project research-only scope.
+disabled_tools = ["heliusWrite", "heliusStreaming", "heliusAccount"]

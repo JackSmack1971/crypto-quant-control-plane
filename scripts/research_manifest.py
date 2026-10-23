@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-INCLUDED = ["AGENTS.md", ".codex/config.toml", "docs/tool-registry.md", "schemas/research-report.schema.json"]
+INCLUDED = ["AGENTS.md", ".codex/config.toml", ".codex/ccxt-mcp.config.json", "docs/tool-registry.md", "docs/mcp-probe-2026-10-23.md", "schemas/research-report.schema.json"]
 DIRECTORIES = [".codex/agents", ".agents/skills", "methodologies", "artifacts"]
 
 def build_manifest(root=ROOT):
