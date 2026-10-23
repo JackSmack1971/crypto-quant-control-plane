@@ -13,7 +13,7 @@
 | 7. Tool capability registry | PARTIAL | Existing inventory already distinguishes chat tools from Codex and denylisted 0xArchive management; added invocation-level evidence; no unverified financial servers registered | Qualify schemas, exact allowlists and data coverage individually |
 | 8. Execution environment | BLOCKED | No frozen runtime or dependencies implied; portable stdlib-only checks and manifests | Verify target OS/CLI/Python versions, credentials and network policy |
 | 9. Network policy | PARTIAL | Retained `sandbox_workspace_write.network_access = false`; explicit test guards | Confirm CLI effective network state; hosted MCP access is a different surface |
-| 10. Agent orchestration | PARTIAL | Five bounded roles kept; depth 1; optional validation and single-writer discipline documented | Spawn/review only if supported and authorized |
+| 10. Agent orchestration | PARTIAL | Seven bounded roles (five original plus two added in `docs/optimization-report.md`); depth 1; optional validation and single-writer discipline documented | Spawn/review only if supported and authorized |
 | 11. Source control | PARTIAL | Archive has no `.git`; baseline/diff discipline clarified; content manifest supports comparisons | Establish Git baseline after installation, then test dirty-state handling |
 | 12. Governance & telemetry | PARTIAL | Added offline manifest with file digests and reproducibility metadata, evidence-limit statements and JSON-schema validation tests | Correlate CLI/OTel, Git and provider evidence externally if needed |
 
@@ -21,7 +21,7 @@
 
 **Fixed:** invalid agent concurrency configuration and superficial offline verifier. **Strengthened:** visible audit coverage, structural negative tests, a deterministic file-digest manifest for local inputs, no-trade and no-secret checks, schema-shape checks and invocation/snapshot evidence instructions.
 
-**Preserved byte-for-byte:** five extensive domain methodologies and the original VVV artifact. No speculative Codex components, finance endpoints, webhooks or server registrations were introduced. The `research_manifest.py` output is a user-generated artifact; it is **not** an immutable runtime authorization snapshot, off-host audit ledger, or proof that live data was retrieved.
+**Preserved byte-for-byte:** all nine extensive domain methodologies and the original VVV artifact. No speculative Codex components, finance endpoints, webhooks or server registrations were introduced. The `research_manifest.py` output is a user-generated artifact; it is **not** an immutable runtime authorization snapshot, off-host audit ledger, or proof that live data was retrieved.
 
 ### Evidence & source hierarchy
 
