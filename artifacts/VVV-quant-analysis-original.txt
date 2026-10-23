@@ -1,0 +1,516 @@
+# Venice Token (VVV) — Quantitative Research Report
+
+<row align="center" gap={2} wrap="wrap">
+  <badge color="secondary">20 October 2026</badge>
+  <badge color="warning">Preliminary: Inconclusive</badge>
+</row>
+
+**Research scope:** Spot market structure, momentum, volatility, derivatives positioning, tokenomics, on-chain fundamentals, liquidity, valuation, and downside risk.
+
+**Primary horizon:** 7–30 days for market signals, 3–12 months for fundamental valuation. USD-denominated spot data is the reference unless stated otherwise.
+
+## 1. Executive assessment
+
+Venice Token is an AI-infrastructure utility token whose economic thesis centers on access to Venice's inference capacity through VVV staking. Its valuation therefore depends on more than general AI-token enthusiasm: API demand, token staking economics, circulating supply, and the relationship between inference usage and token demand all matter.
+
+**Preliminary assessment: Neutral / Inconclusive, with low confidence in a directional forecast.**
+
+The initial market snapshot shows strong longer-horizon appreciation alongside a recent monthly pullback. That combination warrants examining whether VVV is consolidating after a sustained expansion or losing momentum despite favorable longer-term positioning.
+
+## 2. Market snapshot
+
+<box gap={1}>
+  <text color="secondary" weight="medium" size="xs">VVV / USD · CoinMarketCap · 2026-10-20 23:31 UTC</text>
+  <row align="baseline" gap={3}>
+    <title size="2xl" color="default" tabularNums={true}>$25.4019</title>
+    <badge color="success">+4.59% / 24h</badge>
+  </row>
+  <grid columns={2} gap={3}>
+    <grid-item>
+      <box gap={1}>
+        <text color="secondary" size="xs">Circulating market cap</text>
+        <title size="lg" tabularNums>$1.241B</title>
+      </box>
+    </grid-item>
+    <grid-item>
+      <box gap={1}>
+        <text color="secondary" size="xs">Fully diluted valuation</text>
+        <title size="lg" tabularNums>$2.062B</title>
+      </box>
+    </grid-item>
+    <grid-item>
+      <box gap={1}>
+        <text color="secondary" size="xs">Reported 24h volume</text>
+        <title size="lg" tabularNums>$45.21M</title>
+      </box>
+    </grid-item>
+    <grid-item>
+      <box gap={1}>
+        <text color="secondary" size="xs">Market-cap rank</text>
+        <title size="lg">#58</title>
+      </box>
+    </grid-item>
+  </grid>
+</box>
+
+<Chart content={{"chartType":"bar","meta":{"title":"VVV price performance by horizon","description":"Point-to-point USD price changes, not risk-adjusted returns. Source: CoinMarketCap snapshot, 23:31 UTC."},"xKey":"window","series":[{"dataKey":"return","label":"Return","valueSuffix":"%"}],"yAxisMin":-20,"data":[{"window":"24h","return":4.59},{"window":"7d","return":12.55},{"window":"30d","return":-12.71},{"window":"60d","return":59.07},{"window":"90d","return":108.71}]}}/>
+
+<text color="secondary" size="xs">Observation: Strong 60–90-day appreciation, positive weekly performance, and negative 30-day performance. The chart displays reported returns, not a fitted trend or statistically tested signal.</text>
+
+## 3. Asset identity and token economics
+
+<row align="start" gap={3}>
+  <AsyncImage query="Venice AI VVV token logo official Venice AI" aspectRatio="1:1" maxWidth="92px"/>
+  <box flex="1" gap={1}>
+    **<Entity category="cryptocurrency" value="Venice Token (VVV)"/>**
+
+    Network: Base (Ethereum Layer 2)
+
+    Contract: `0xacfE6019Ed1A7Dc6f7B508C02d1b04ec88cC21bf`
+
+    <text size="sm"><Link url="https://basescan.org/token/0xacfE6019Ed1A7Dc6f7B508C02d1b04ec88cC21bf" title="BaseScan"/> · <Link url="https://venice.ai/token" title="Official token page"/></text>
+  </box>
+</row>
+
+The contract address matches CoinMarketCap's asset profile and Venice's token documentation. VVV is a utility token, not a contractual ownership interest in Venice.ai.
+
+### Supply and dilution
+
+| Metric | Observed |
+|---|---:|
+| Circulating supply | 48.841M VVV |
+| Total outstanding supply | 81.157M VVV |
+| Circulating / total supply | 60.2% |
+| Noncirculating / total supply | 39.8% |
+| FDV / circulating market cap | 1.66× |
+| Reported 24h volume / market cap | 3.64% |
+
+**Interpretation:** Not all outstanding tokens are circulating. However, the 39.8% difference must not be described as tokens awaiting future minting. It consists of existing noncirculating supply under the provider's definitions.
+
+Additional minting, vesting, burns, and treasury transfers can separately change circulating supply.
+
+### The fundamental tokenomics issue
+
+An October 20 Tokenomist investigation materially changes the valuation picture. Its reported on-chain reconstruction indicates:
+
+- Venice reduced annual new-token emissions to approximately **2 million VVV** from October 1, 2026.
+- The October full-month burn pace offsets approximately **25% of new emissions**, rather than making total supply deflationary.
+- Team vesting reportedly releases approximately 10,300 VVV per day into circulation through late January 2027.
+- The staking contract's major economic settings are controlled by a 4-of-6 multisignature wallet without a timelock, according to its contract inspection. <Cite refs={["turn785775view0","turn123761search4"]}/>
+
+These are third-party findings, not independently reproduced chain results in this session. The direct Base contract inspection failed because the on-chain provider's API credits were exhausted.
+
+<box gap={2}>
+  <text weight="medium" size="sm">VVV economic mechanism</text>
+  <box border radius="lg" padding={3} gap={2}>
+    <box background="surface-secondary" radius="md" padding={3} align="center">
+      **Venice AI platform usage**
+
+      <caption>Subscriptions and API consumption</caption>
+    </box>
+    <row justify="center">
+      <icon name="arrow-down" color="secondary"/>
+    </row>
+    <grid columns={2} gap={2}>
+      <grid-item>
+        <box background="surface-secondary" radius="md" padding={3} gap={1}>
+          **Token utility**
+
+          <text size="xs">Stake VVV, obtain sVVV, and potentially lock it to mint DIEM for API credits.</text>
+        </box>
+      </grid-item>
+      <grid-item>
+        <box background="surface-secondary" radius="md" padding={3} gap={1}>
+          **Buy-and-burn**
+
+          <text size="xs">Revenue-linked and discretionary purchases reduce outstanding VVV.</text>
+        </box>
+      </grid-item>
+    </grid>
+    <row justify="center">
+      <icon name="arrow-down" color="secondary"/>
+    </row>
+    <box border radius="md" padding={3} align="center">
+      **Net token supply and implied utility demand**
+
+      <caption>Emissions and unlocks work against scarcity; staking and burns may support it</caption>
+    </box>
+  </box>
+</box>
+
+### Adoption and revenue
+
+Tokenomist reconstructed approximately $336,000 in daily sales over October 1–17 from on-chain payment-linked burns, suggesting roughly $123 million in annualized sales at that pace. Venice's CEO separately claimed annual revenue exceeding $150 million.
+
+These figures are **not independently audited revenue observations** and should not be treated as interchangeable. The reconstruction has known coverage and pricing assumptions. <Cite ref="turn785775view0"/>
+
+A useful valuation distinction:
+
+**Enterprise sales are not VVV-holder cash flows.** Token holders do not automatically receive Venice corporate profits. Their measurable economic benefits involve token utility, emissions, and token burns, with material discretionary governance exposure.
+
+At the current $1.241B circulating capitalization, a roughly $11.9M annualized burn pace reported by Tokenomist implies an indicative buy-and-burn yield of approximately 0.96% before adjusting for future changes. This is not an equity earnings yield, a guaranteed distribution, or necessarily a net supply reduction.
+
+## 4. Momentum and technical structure
+
+<box gap={1}>
+  <text color="secondary" weight="medium" size="xs">Technical indicator snapshot · CoinMarketCap</text>
+  <grid columns={3} gap={2}>
+    <grid-item>
+      <box border radius="lg" padding={3} gap={1}>
+        <caption>RSI (14)</caption>
+        <title size="xl" tabularNums>49.05</title>
+        <text color="secondary" size="xs">Neutral</text>
+      </box>
+    </grid-item>
+    <grid-item>
+      <box border radius="lg" padding={3} gap={1}>
+        <caption>SMA (30d)</caption>
+        <title size="xl" tabularNums>$26.56</title>
+        <text color="secondary" size="xs">Price below</text>
+      </box>
+    </grid-item>
+    <grid-item>
+      <box border radius="lg" padding={3} gap={1}>
+        <caption>SMA (200d)</caption>
+        <title size="xl" tabularNums>$15.79</title>
+        <text color="secondary" size="xs">Price above</text>
+      </box>
+    </grid-item>
+  </grid>
+</box>
+
+| Indicator | Value | Interpretation |
+|---|---:|---|
+| 7-day SMA | $23.22 | Price above |
+| 30-day EMA | $24.44 | Price above |
+| 30-day SMA | $26.56 | Price below |
+| 200-day SMA | $15.79 | Price above |
+| MACD histogram | −0.284 | Negative momentum component |
+| RSI (14) | 49.05 | No extreme momentum reading |
+
+The combination suggests a longer-term uptrend undergoing consolidation. Price has recovered above faster-moving averages but remains below the 30-day simple average.
+
+RSI and MACD are descriptive calculations. Neither is established as a profitable VVV-specific forecast without historical validation.
+
+### Reference price levels
+
+<box gap={2}>
+  {#each [{p:34.51,t:"Prior swing high",c:"secondary"},{p:29.36,t:"38.2% retracement",c:"secondary"},{p:26.56,t:"30-day SMA",c:"secondary"},{p:25.40,t:"Reference spot",c:"default"},{p:23.91,t:"78.6% retracement",c:"secondary"},{p:21.03,t:"Recent swing low",c:"secondary"}] as v}
+    <row align="center" gap={2}>
+      <box width="65px">
+        <text tabularNums weight={v.p===25.40?"semibold":"normal"} size="sm">${v.p.toFixed(2)}</text>
+      </box>
+      <box flex="1" gap={1}>
+        <box background={v.p===25.40?"surface-tertiary":"surface-secondary"} radius="full" height="7px">
+          <box background={v.p===25.40?"default":"border-strong"} height="100%" width={`${(v.p-19)/17*100}%`} radius="full"/>
+        </box>
+        <text color="secondary" size="2xs">{v.t}</text>
+      </box>
+    </row>
+  {/each}
+</box>
+
+<caption>Levels supplied by CoinMarketCap technical indicators; horizontal reference levels, not empirically established support or resistance.</caption>
+
+For paper scenarios, sustained movement above $26.56 followed by $29.36 would be consistent with strengthening momentum. A decline through $23.91 toward $21.03 would instead indicate renewed weakness. These are conditional descriptions, not forecast probabilities.
+
+## 5. Historical volatility and downside risk
+
+I independently calculated risk metrics using the returned OKX VVV-USDT daily spot candles, rather than relying on displayed technical indicators.
+
+<box border radius="lg" padding={3} gap={2}>
+  <row align="center" justify="between">
+    <box gap={1}>
+      <text color="secondary" size="xs">Annualized realized volatility</text>
+      <title size="2xl" tabularNums>117.0%</title>
+    </box>
+    <badge color="warning">High risk</badge>
+  </row>
+  <divider color="subtle"/>
+  <grid columns={2} gap={3}>
+    <grid-item>
+      <box gap={1}>
+        <caption>Sample drawdown</caption>
+        <title size="lg" tabularNums>−31.35%</title>
+      </box>
+    </grid-item>
+    <grid-item>
+      <box gap={1}>
+        <caption>Daily 95% historical VaR</caption>
+        <title size="lg" tabularNums>10.75%</title>
+      </box>
+    </grid-item>
+    <grid-item>
+      <box gap={1}>
+        <caption>Daily 95% historical ES</caption>
+        <title size="lg" tabularNums>13.43%</title>
+      </box>
+    </grid-item>
+    <grid-item>
+      <box gap={1}>
+        <caption>Daily observations</caption>
+        <title size="lg">36 bars</title>
+      </box>
+    </grid-item>
+  </grid>
+</box>
+
+### Calculation method
+
+The dataset contains 36 completed daily candles spanning September 14 through October 19, 2026, indexed by the provider at 16:00 UTC, producing 35 daily log returns.
+
+I used:
+
+\[
+r_t=\ln(P_t/P_{t-1})
+\]
+
+\[
+\sigma_{\mathrm{ann}}=\operatorname{sd}(r_t)\sqrt{365}
+\]
+
+Historical VaR uses the empirical lower-tail return quantile; expected shortfall averages observations in that tail.
+
+**Important qualification:** These tail metrics are exploratory. A 35-return sample is too small for a trustworthy 95% or 99% tail-risk estimate, let alone a precise loss probability. The reported 95% ES is driven by only two observations. Likewise, the −31.35% drawdown covers the available sample, not VVV's lifetime.
+
+The observed annualized volatility is substantial. More importantly, daily shocks are large enough that leveraged positions would require a separately modeled margin, liquidation, and slippage analysis.
+
+### Synthetic risk stress test
+
+The following assumes an unleveraged $10,000 spot exposure, no rebalancing, and no transaction costs. These are hypothetical price shocks, not predicted returns.
+
+{@body const [exposure,setExposure] = DIL.useState(10000)}
+<box border radius="lg" padding={3} gap={3}>
+  <row align="center" justify="between">
+    **Position stress calculator**
+    <text color="secondary" size="xs">Synthetic assumptions</text>
+  </row>
+  <row align="center" gap={2}>
+    <text size="sm">Notional exposure</text>
+    <spacer/>
+    <title size="md" tabularNums>${exposure.toLocaleString("en-US")}</title>
+  </row>
+  <slider min={1000} max={100000} step={1000} value={exposure} onChange={setExposure}/>
+  <table>
+    <table-row><table-cell>−10% shock</table-cell><table-cell align="end"><text color="danger" tabularNums>−${(exposure*.10).toLocaleString("en-US")}</text></table-cell></table-row>
+    <table-row><table-cell>−25% shock</table-cell><table-cell align="end"><text color="danger" tabularNums>−${(exposure*.25).toLocaleString("en-US")}</text></table-cell></table-row>
+    <table-row><table-cell>−40% shock</table-cell><table-cell align="end"><text color="danger" tabularNums>−${(exposure*.40).toLocaleString("en-US")}</text></table-cell></table-row>
+    <table-row><table-cell>−60% shock</table-cell><table-cell align="end"><text color="danger" tabularNums>−${(exposure*.60).toLocaleString("en-US")}</text></table-cell></table-row>
+  </table>
+  <caption>Assumes full exposure to VVV spot. Actual execution losses can be worse during liquidity gaps; leveraged derivatives have additional liquidation and funding risk.</caption>
+</box>
+
+## 6. Derivatives positioning
+
+A live OKX VVV-USDT perpetual snapshot was available.
+
+| Metric | OKX observation |
+|---|---:|
+| Perpetual symbol | VVV-USDT-SWAP |
+| Open interest | 126,358.6 VVV |
+| Open-interest notional | $3.212M |
+| Indicative funding rate | +0.005% / 4h |
+| Simple annualized funding, if unchanged | +10.95% |
+| Funding direction | Longs pay shorts |
+
+<caption>Source: OKX derivatives endpoints, retrieved approximately 23:33 UTC. Funding intervals inferred from the returned settlement timestamps; the displayed upcoming funding rate is indicative, not a confirmed future settlement.</caption>
+
+The funding calculation is:
+
+\[
+APR=0.00005\times\frac{8760}{4}=10.95\%
+\]
+
+This does **not** mean shorts can reliably earn 10.95% annually. The rate can change or reverse, and carry economics also depend on fees, basis, hedging, financing, and liquidation risk.
+
+### Positioning assessment
+
+**Observation:** VVV's OKX perpetual market has positive indicative funding, consistent with longs paying for exposure at that venue.
+
+**Not established:** Whether aggregate VVV futures positioning is crowded or dominated by leveraged longs. A single open-interest snapshot cannot establish directional demand, and every open long has a corresponding short.
+
+No multi-venue historical funding, OI-change decomposition, reliable liquidation series, or validated options volatility surface was obtained. Consequently, there is insufficient evidence for a defensible squeeze or liquidation-cascade probability.
+
+The derivatives research protocol therefore requires an **INCONCLUSIVE** positioning signal.
+
+## 7. Spot liquidity and execution risk
+
+The OKX live spot order book provides a narrower, execution-relevant perspective than aggregate reported trading volume.
+
+<box gap={2}>
+  <row align="center" gap={3}>
+    <box flex="1" gap={1}>
+      <caption>Best bid</caption>
+      <title size="lg" tabularNums>$25.41</title>
+    </box>
+    <box flex="1" gap={1}>
+      <caption>Best ask</caption>
+      <title size="lg" tabularNums>$25.42</title>
+    </box>
+    <box flex="1" gap={1}>
+      <caption>Quoted spread</caption>
+      <title size="lg" tabularNums>3.93 bps</title>
+    </box>
+  </row>
+  <text weight="medium" size="sm">Visible order-book notional by distance from mid-price</text>
+  <grid columns={2} gap={3}>
+    <grid-item>
+      <box gap={2}>
+        <text size="sm" weight="medium">Bid depth</text>
+        {#each [{l:"±10 bps",v:761,max:62408},{l:"±50 bps",v:38687,max:62408},{l:"±100 bps",v:62408,max:62408}] as x}
+          <box gap={1}>
+            <row justify="between" gap={1}>
+              <text color="secondary" size="xs">{x.l}</text>
+              <text size="xs" tabularNums>${Math.round(x.v).toLocaleString("en-US")}</text>
+            </row>
+            <box background="surface-secondary" height="9px" radius="full">
+              <box background="#379C85" width={`${x.v/x.max*100}%`} height="100%" radius="full"/>
+            </box>
+          </box>
+        {/each}
+      </box>
+    </grid-item>
+    <grid-item>
+      <box gap={2}>
+        <text size="sm" weight="medium">Ask depth</text>
+        {#each [{l:"±10 bps",v:280,max:62408},{l:"±50 bps",v:7594,max:62408},{l:"±100 bps",v:20115,max:62408}] as x}
+          <box gap={1}>
+            <row justify="between" gap={1}>
+              <text color="secondary" size="xs">{x.l}</text>
+              <text size="xs" tabularNums>${Math.round(x.v).toLocaleString("en-US")}</text>
+            </row>
+            <box background="surface-secondary" height="9px" radius="full">
+              <box background="#DB9675" width={`${x.v/x.max*100}%`} height="100%" radius="full"/>
+            </box>
+          </box>
+        {/each}
+      </box>
+    </grid-item>
+  </grid>
+</box>
+
+<caption>OKX spot L2 snapshot at 23:33:58 UTC, October 20, 2026. Depth is the sum of visible quote notional within each band, not guaranteed executable capacity.</caption>
+
+Although VVV's global reported volume exceeds $45M per day, the near-touch OKX order book is thin in this snapshot. Inside 10 basis points of the mid-price, visible ask depth was approximately $280.
+
+This makes the distinction between turnover and capacity particularly important. Order books change rapidly; a single snapshot cannot establish persistent slippage or sustainable trading capacity. It does, however, demonstrate why a large-order execution study cannot rely on daily volume alone.
+
+## 8. Fundamental valuation and risk factors
+
+### Valuation framework
+
+I would not use a conventional price-to-earnings multiple for VVV. It is neither equity nor a contractual revenue-sharing instrument.
+
+Three measures are more appropriate:
+
+| Valuation lens | Meaning | Current status |
+|---|---|---|
+| Market cap / annualized platform sales | Exposure to business scale, not token earnings | Approximately 8.3–10.1× using the $123M–$150M reported annualized-sales range |
+| Annualized burns / token market cap | Company-directed token repurchase intensity | Approximately 0.96% at the reported October burn pace |
+| Net annual supply growth | New emissions minus burns | Positive according to Tokenomist's October analysis |
+
+The sales multiple is indicative only: it combines a token market capitalization with sales belonging to a separate corporate entity. It should not be directly compared with public-equity revenue multiples.
+
+### Risk matrix
+
+| Risk factor | Assessment | Confidence |
+|---|---|---|
+| Price volatility | High | Medium |
+| Market liquidity | Venue dependent; thin near touch on OKX | Medium |
+| Supply dilution | Ongoing emissions and vesting | Medium |
+| Governance concentration | Significant contract-control concerns | Medium |
+| Protocol adoption | Evidence of rising usage | Medium |
+| Derivatives crowding | Unknown | Low |
+| Token value capture | Discretionary and indirect | Medium |
+| Contract exploit / privileged-function risk | Not independently verified | Low |
+
+A notable additional warning: CoinGecko displays an automated GoPlus risk notice indicating that the contract creator may possess privileged powers affecting token behavior. This is a **third-party warning, not proof of malicious behavior**. The specific roles and capabilities need verification directly against the contract and its owners. <Cite ref="turn123761search9"/>
+
+## 9. Conditional research scenarios
+
+These are qualitative paper scenarios over a 7–30-day horizon. No probability estimates are assigned because VVV-specific calibrated outcome frequencies were not established.
+
+<box gap={3}>
+  <row align="start" gap={2}>
+    <icon name="trending-up" color="success" size="lg"/>
+    <box flex="1" gap={1}>
+      **Bullish continuation — Conditional**
+
+      Sustained price acceptance above $26.56, followed by $29.36, alongside strengthening spot liquidity and growing API demand.
+
+      *Invalidation:* A sustained loss of the $23.91 reference area, or renewed weakness in demand and market structure.
+    </box>
+  </row>
+  <divider color="subtle"/>
+  <row align="start" gap={2}>
+    <icon name="minus" color="secondary" size="lg"/>
+    <box flex="1" gap={1}>
+      **Range consolidation — Conditional**
+
+      Price continues fluctuating between the recent low-$20s support region and the upper-$20s resistance region without confirmed directional breakout.
+
+      *Invalidation:* Sustained movement outside the range supported by stronger participation and independent market confirmation.
+    </box>
+  </row>
+  <divider color="subtle"/>
+  <row align="start" gap={2}>
+    <icon name="trending-down" color="danger" size="lg"/>
+    <box flex="1" gap={1}>
+      **Bearish repricing — Conditional**
+
+      Price breaks below $21.03 while supply expands, token burns remain insufficient to offset issuance, or token-governance risks materialize.
+
+      *Invalidation:* Recovery above the 30-day moving average with confirmed improving liquidity and fundamentals.
+    </box>
+  </row>
+</box>
+
+These levels are not validated trading triggers. A proper signal would require a predeclared strategy, costs, sample, and walk-forward assessment.
+
+## 10. Model readiness and evidence limitations
+
+| Research component | Status |
+|---|---|
+| Canonical asset identity | Verified through matching published identifiers |
+| Spot price cross-check | Passed: CMC $25.4019 vs OKX $25.41 |
+| Daily realized volatility | Calculated, short sample |
+| Historical VaR / ES | Calculated, insufficient tail observations |
+| Market depth | One venue, one snapshot |
+| Funding / OI | One venue, current snapshot |
+| BTC/ETH beta and correlation | Not estimated |
+| On-chain holder concentration | Third-party evidence only |
+| Verified contract permissions | Blocked |
+| Full historical backtest | Not performed |
+| Walk-forward alpha validation | Not performed |
+
+**Verification record:** The direct CoinPaprika asset lookup failed with a 404; a fallback market comparison used OKX and CoinMarketCap. Blockscout contract inspections failed because provider credits were exhausted. This prevents an independent conclusion about upgradeability, privileged functions, and exact holder concentration.
+
+The 36-bar OKX historical dataset is inadequate for a robust full-cycle volatility model, long-horizon beta analysis, or tail-event inference. No Sharpe ratio, strategy win rate, statistical significance, or out-of-sample alpha is claimed.
+
+### 11. Final quant verdict
+
+<box gap={2}>
+  <row align="center" justify="between">
+    <title size="lg">VVV research conclusion</title>
+    <badge color="warning">Inconclusive</badge>
+  </row>
+  **Market structure:** Longer-term positive momentum, but mixed short-term signals and elevated volatility.
+
+  **Fundamentals:** Increasing evidence of actual AI-service usage, but tokenholder value capture remains indirect, governance-dependent, and diluted by supply growth.
+
+  **Risk:** Volatility, market depth, token-control privileges, and the gap between enterprise value and tokenholder rights are the central concerns.
+
+  **Signal quality:** Insufficient evidence to justify a statistically calibrated bullish or bearish forecast.
+</box>
+
+My highest-priority next research question is **whether incremental AI inference demand is translating into durable net economic value per circulating VVV**, rather than merely into growing revenue for Venice.ai.
+
+The most useful next dataset would combine weekly API demand, actual token burns, minting and vesting, staking and DIEM locking, and spot liquidity. That would make it possible to test a fundamental value-capture hypothesis against price returns without confusing platform growth with token appreciation.
+
+This is quantitative research, not personalized investment advice. Crypto token and leveraged derivative positions can suffer substantial or total losses.
+
+<text color="secondary" size="xs">Research as of: October 20, 2026, approximately 23:34 UTC. Primary quantitative sources: CoinMarketCap and OKX. Fundamental context: Venice official documentation and Tokenomist's October 20 analysis. Calculations use retrieved observations and explicitly labeled assumptions.</text>
+
+I can also monitor VVV's next emission-rate change and monthly burn to assess whether its net supply trajectory improves.
+
+<SuggestAutomation label="Monitor VVV emissions and next monthly burn"/>

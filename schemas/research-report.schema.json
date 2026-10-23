@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Crypto Quant Evidence Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["research_id", "as_of_utc", "scope", "verdict", "confidence", "evidence", "calculations", "rival_thesis", "risks", "quality_ledger", "next_test", "mutations"],
+  "properties": {
+    "research_id": {"type": "string", "minLength": 1},
+    "as_of_utc": {"type": "string", "format": "date-time"},
+    "scope": {"type": "object", "required": ["instrument", "horizon"], "properties": {"instrument": {"type": "string"}, "venue": {"type": ["string", "null"]}, "horizon": {"type": "string"}, "quote": {"type": ["string", "null"]}}},
+    "verdict": {"enum": ["SUPPORTED", "CONDITIONAL", "INCONCLUSIVE", "CONTRADICTED", "NOT TESTABLE"]},
+    "confidence": {"enum": ["HIGH", "MEDIUM", "LOW", "UNVERIFIABLE"]},
+    "evidence": {"type": "array", "items": {"type": "object", "required": ["label", "source", "observation_time_utc", "definition", "units", "value"], "properties": {"label": {"enum": ["OBSERVED", "CALCULATED", "INFERRED", "HYPOTHETICAL", "UNVERIFIED"]}, "source": {"type": "string"}, "original_producer": {"type": ["string", "null"]}, "observation_time_utc": {"type": ["string", "null"]}, "retrieved_at_utc": {"type": ["string", "null"]}, "definition": {"type": "string"}, "units": {"type": "string"}, "value": {}, "coverage": {"type": ["string", "null"]}, "verification_status": {"type": ["string", "null"]}}}},
+    "calculations": {"type": "array"},
+    "rival_thesis": {"type": "string"},
+    "risks": {"type": "array"},
+    "quality_ledger": {"type": "array"},
+    "next_test": {"type": ["string", "null"]},
+    "mutations": {"const": 0}
+  }
+}

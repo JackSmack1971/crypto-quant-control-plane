@@ -1,0 +1,53 @@
+# Loaded only when this repository is trusted by Codex.
+# Do not put credentials or host-specific provider settings in this file.
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[sandbox_workspace_write]
+network_access = false
+
+[agents]
+max_threads = 4
+max_depth = 1
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+
+# Project-owned MCP registrations. Credentials and OAuth sessions are NOT committed.
+# Registration is not proof of authorization or successful connection.
+
+[mcp_servers.coingecko]
+url = "https://mcp.api.coingecko.com/mcp"
+
+[mcp_servers.coinpaprika]
+url = "https://mcp.coinpaprika.com/streamable-http"
+
+[mcp_servers.dexpaprika]
+url = "https://mcp.dexpaprika.com/streamable-http"
+
+[mcp_servers.oxarchive]
+url = "https://mcp.0xarchive.io/mcp"
+enabled_tools = ["get_capabilities", "get_data_coverage", "get_instruments", "get_trades", "get_orderbook", "get_orderbook_history", "get_candles", "get_funding_history", "get_open_interest_history", "get_liquidations"]
+
+[mcp_servers.massive]
+url = "https://mcp.massive.com/"
+
+[mcp_servers.blockscout]
+url = "https://mcp.blockscout.com/mcp"
+# Optional PRO key, supplied only by the launching environment.
+env_http_headers = { "Blockscout-MCP-Pro-Api-Key" = "BLOCKSCOUT_MCP_PRO_API_KEY" }
+
+[mcp_servers.ccxt]
+command = "npx"
+args = ["-y", "ccxt-mcp"]
+# Public market methods only; do not forward exchange credentials.
+enabled_tools = ["list_exchanges", "describe_exchange", "describe_method", "search_markets", "get_tickers", "get_orderbook", "get_ohlcv", "get_trades", "search_events", "get_safety_status"]
+
+[mcp_servers.alchemy]
+url = "https://mcp.alchemy.com/mcp"
+enabled = false  # OAuth and per-tool review must precede activation.
+
+[mcp_servers.helius]
+command = "npx"
+args = ["-y", "helius-mcp@latest"]
+enabled = false  # Routed tools may exceed project research-only scope.
