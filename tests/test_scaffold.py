@@ -78,5 +78,31 @@ class ControlPlaneTests(unittest.TestCase):
             with self.assertRaises(AssertionError):
                 validate(root)
 
+    def _reject_config_edit(self, old, new):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "project"
+            shutil.copytree(ROOT, root)
+            path = root / ".codex/config.toml"
+            original = path.read_text()
+            self.assertIn(old, original)
+            path.write_text(original.replace(old, new, 1))
+            with self.assertRaises(AssertionError):
+                validate(root)
+
+    def test_unpinned_npx_latest_is_rejected(self):
+        self._reject_config_edit("helius-mcp@2.3.0", "helius-mcp@latest")
+
+    def test_write_tool_allowlist_is_rejected(self):
+        self._reject_config_edit('"get_safety_status"', '"get_safety_status", "create_order"')
+
+    def test_feedback_tool_allowlist_is_rejected(self):
+        self._reject_config_edit('"getCoins"', '"submitFeedback", "getCoins"')
+
+    def test_enabling_helius_is_rejected(self):
+        self._reject_config_edit(
+            "enabled = false  # Routed tools may exceed project research-only scope.",
+            "enabled = true  # Routed tools may exceed project research-only scope.",
+        )
+
 if __name__ == "__main__":
     unittest.main()
